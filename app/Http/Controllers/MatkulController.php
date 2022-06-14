@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matkul;
+
+
 use Illuminate\Http\Request;
 
 class MatkulController extends Controller
@@ -13,7 +16,9 @@ class MatkulController extends Controller
      */
     public function index()
     {
-        //
+        $data['matkul'] = Matkul::all();
+
+        return view('matkul.index', $data);
     }
 
     /**

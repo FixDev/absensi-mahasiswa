@@ -23,11 +23,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <?php
-                                foreach ($matkul as $mat) {
-                                    $no = 1;
-                                ?>
+                            <?php
+                            foreach ($matkul as $mat) {
+                                $no = 1;
+                            ?>
+                                <tr>
                                     <td>
                                         <div class="d-flex px-3 py-1">
                                             {{$no}}
@@ -46,9 +46,9 @@
                                             <i class="material-icons text-md">delete</i>
                                         </a>
                                     </td>
-                                <?php $no++;
-                                } ?>
-                            </tr>
+                                </tr>
+                            <?php $no++;
+                            } ?>
                         </tbody>
                     </table>
                 </div>
@@ -64,4 +64,4 @@
     current[3].className += " active bg-gradient-primary"
 </script>
 
-@endsection 
+@endsection

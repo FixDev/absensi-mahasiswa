@@ -24,8 +24,8 @@
                         </thead>
                         <tbody>
                             <?php
+                            $no = 1;
                             foreach ($matkul as $mat) {
-                                $no = 1;
                             ?>
                                 <tr>
                                     <td>

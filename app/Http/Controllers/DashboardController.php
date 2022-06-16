@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Absensi;
-use App\Models\Dosen;
-use App\Models\Mahasiswa;
-use App\Models\Matkul;
-
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,11 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data['total_mahasiswa'] = Mahasiswa::count();
-        $data['total_dosen'] = Dosen::count();
-        $data['total_matkul'] = Matkul::count();
-        $data['total_absensi'] = Absensi::count();
-        return view('dashboard', $data);
+        return view('dashboard');
     }
 
     /**

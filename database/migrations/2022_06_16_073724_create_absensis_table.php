@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('absensis', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 45);
-            $table->string('email', 45)->unique();
-            $table->string('password');
-            $table->integer('mahasiswa_id')->nullable();
-            $table->integer('dosen_id')->nullable();
+            $table->dateTime('waktu');
+            $table->integer('nim');
+            $table->enum('status', ['Hadir', 'Alpa', 'Izin', 'Sakit']);
+            $table->integer('matkul_id');
+            $table->integer('mahasiswa_id');
+            // $table->foreign('matkul_id')->references('id')->on('matkuls');
             // $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas');
-            // $table->foreign('dosen_id')->references('id')->on('dosens');
-            // $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('absensis');
     }
 };

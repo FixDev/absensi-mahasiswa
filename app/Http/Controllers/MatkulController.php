@@ -16,9 +16,9 @@ class MatkulController extends Controller
      */
     public function index()
     {
-        $data['matkul'] = Matkul::all();
+        $data = Matkul::all();
 
-        return view('matkul.index', $data);
+        return view('matkul.index')->with('matkul', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class MatkulController extends Controller
      */
     public function create()
     {
-        //
+        return view('matkul.form');
     }
 
     /**
@@ -39,7 +39,16 @@ class MatkulController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'kode' => 'required',
+            'semester' => 'required',
+        ]);
+
+        Matkul::create($request->all());
+
+        return redirect()->route('matkul.index')
+            ->with('success', 'Mata kuliah berhasil dibuat.');
     }
 
     /**
@@ -50,7 +59,8 @@ class MatkulController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Matkul::findOrFail($id);
+        return view('matkul.view')->with('matkul', $data);
     }
 
     /**
@@ -61,7 +71,8 @@ class MatkulController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Matkul::findOrFail($id);
+        return view('matkul.form')->with('matkul', $data);
     }
 
     /**
@@ -73,7 +84,18 @@ class MatkulController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'kode' => 'required',
+            'semester' => 'required',
+        ]);
+
+        $matkul = Matkul::findOrFail($id);
+
+        $matkul->update($request->all());
+
+        return redirect()->route('matkul.show', $matkul->id)
+            ->with('success', 'Mata Kuliah berhasil diupdate.');
     }
 
     /**
@@ -84,6 +106,11 @@ class MatkulController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $matkul = Matkul::findOrFail($id);
+
+        $matkul->delete();
+
+        return redirect()->route('matkul.index')
+            ->with('success', 'Mata Kuliah berhasil dihapus.');
     }
 }

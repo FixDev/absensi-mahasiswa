@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title', 'Mahasiswa')
+@section('title', 'Mata Kuliah')
 
 @section('content')
 
@@ -12,6 +12,11 @@
                 </div>
             </div>
             <div class="card-body px-0 pb-2">
+                <div class="d-flex align-items-end flex-column">
+                    <a class="btn btn-warning btn-lg mx-3" href="/matkul/create">
+                        <i class="material-icons text-lg">add</i>
+                        Tambah</a>
+                </div>
                 <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
@@ -36,15 +41,17 @@
                                     <td>{{$mat->nama}}</td>
                                     <td class="align-middle text-center text-sm">{{$mat->semester}}</td>
                                     <td class="align-middle text-center">
-                                        <a href="javascript:;" class="btn btn-primary btn-sm">
+                                        <a href="/matkul/{{$mat->id}}" class="btn btn-primary btn-sm">
                                             <i class="material-icons text-md">visibility</i>
                                         </a>
-                                        <a href="javascript:;" class="btn btn-secondary btn-sm">
+                                        <a href="/matkul/{{$mat->id}}/edit" class="btn btn-secondary btn-sm">
                                             <i class="material-icons text-md">edit</i>
                                         </a>
-                                        <a href="javascript:;" class="btn btn-danger btn-sm">
-                                            <i class="material-icons text-md">delete</i>
-                                        </a>
+                                        <form method="post" action="{{route('matkul.destroy', $mat->id)}}">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="material-icons text-md">delete</i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php $no++;

@@ -19,9 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [DashboardController::class,'index']);
+Route::get('/', [DashboardController::class, 'index']);
 
-Route::get('/mahasiswa', [MahasiswaController::class,'index']);
-Route::get('/dosen', [DosenController::class,'index']);
-Route::get('/matkul', [MatkulController::class,'index']);
-Route::get('/profile', [ProfileController::class,'index']);
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/dosen', [DosenController::class, 'index']);
+
+Route::resource('/matkul', MatkulController::class);
+
+Route::get('/profile', [ProfileController::class, 'index']);

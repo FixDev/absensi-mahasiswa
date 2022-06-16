@@ -10,6 +10,7 @@ class Matkul extends Model
     use HasFactory;
     protected $guarded = [];
     protected $fillable = [
+        'kode',
         'nama',
         'semester',
     ];

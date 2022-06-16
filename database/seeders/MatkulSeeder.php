@@ -23,6 +23,7 @@ class MatkulSeeder extends Seeder
         for($i=1; $i<=50; $i++){
             $smt = $datapalsu->numberBetween($min = 1, $max = 8);
             $data = [
+                'kode' => 'MT-'. $i,
                 'nama' => 'Matkul '.$i,
                 'semester' => $smt,
             ];

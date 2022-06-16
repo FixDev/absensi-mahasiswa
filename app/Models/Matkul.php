@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Matkul extends Model
 {
     use HasFactory;
-
-    protected $table = 'matkul';
+    protected $guarded = [];
+    protected $fillable = [
+        'nama',
+        'semester',
+    ];
 }

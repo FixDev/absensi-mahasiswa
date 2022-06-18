@@ -21,7 +21,7 @@ class DosenSeeder extends Seeder
         // Generate Dosen
         $data = [];
         for($i=1; $i<=10; $i++){
-            $randMatkul = $datapalsu->numberBetween($min = 1, $max = 99);
+            $randMatkul = $datapalsu->numberBetween($min = 1, $max = 50);
             $gender = $datapalsu->randomElement(['male', 'female']);
             $data = [
                 'nidn' => $datapalsu->randomNumber(5, true),

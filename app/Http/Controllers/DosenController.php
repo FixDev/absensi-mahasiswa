@@ -15,9 +15,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $data = Dosen::select("*")
-            ->with('matkul')
-            ->get();
+        $data = Dosen::with('matkul')->get();
 
         return view('dosen.index')->with('dosen', $data);
     }
@@ -62,10 +60,7 @@ class DosenController extends Controller
      */
     public function show($id)
     {
-        $data = Dosen::select("*")
-            ->where('id', $id)
-            ->with('matkul')
-            ->get();
+        $data = Dosen::with('matkul')->where('id', $id)->first();
 
         return view('dosen.view')->with('dosen', $data);
     }
@@ -78,10 +73,7 @@ class DosenController extends Controller
      */
     public function edit($id)
     {
-        $data = Dosen::select("*")
-            ->where('id', $id)
-            ->with('matkul')
-            ->get();
+        $data = Dosen::with('matkul')->where('id', $id)->first();
 
         $matkul = Matkul::all();
 

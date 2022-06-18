@@ -19,15 +19,15 @@
                     @endif
                     <label class="form-label" for="nama">Nama</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="text" id="nama" class="form-control" name="nama" value="{{$matkul->nama ?? ''}}">
+                        <input type="text" id="nama" class="form-control" name="nama" value="{{$matkul->nama ?? ''}}" required>
                     </div>
                     <label class="form-label" for="kode">Kode</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="text" id="kode" class="form-control" name="kode" value="{{$matkul->kode ?? ''}}">
+                        <input type="text" id="kode" class="form-control" name="kode" value="{{$matkul->kode ?? ''}}" required>
                     </div>
                     <label class="form-label" for="semester">Semester</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="number" id="semster" name="semester" class="form-control" value="{{$matkul->semester ?? ''}}">
+                        <input type="number" id="semster" name="semester" class="form-control" value="{{$matkul->semester ?? ''}}" required>
                     </div>
                     <div class="d-flex flex-row gap-2 mt-4">
                         <a class="btn btn-md btn-warning" href="/matkul">Kembali</a>

@@ -12,22 +12,30 @@
                 </div>
             </div>
             <div class="card-body px-0 pb-2">
-                <form action="{{ !empty($dosen) ? route('dosen.update', $dosen->id) : route('dosen.store') }}" method="post" class="px-4">
+                <form action="{{ !empty($dosen) ? route('dosen.update', $dosen[0]->id) : route('dosen.store') }}" method="post" class="px-4">
                     @csrf
                     @if (!empty($dosen))
                     @method('PUT')
                     @endif
                     <label class="form-label" for="nidn">NIDN</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="number" id="nidn" class="form-control" name="nidn" value="{{$dosen->nidn ?? ''}}">
+                        <input type="number" id="nidn" class="form-control" name="nidn" value="{{$dosen[0]->nidn ?? ''}}" required>
                     </div>
                     <label class="form-label" for="nama">Nama</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="text" id="nama" class="form-control" name="nama" value="{{$dosen->nama ?? ''}}">
+                        <input type="text" id="nama" class="form-control" name="nama" value="{{$dosen[0]->nama ?? ''}}" required>
                     </div>
                     <label class="form-label" for="matkul_id">Mata Kuliah</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="number" id="semster" name="matkul_id" class="form-control" value="{{$dosen->matkul_id ?? ''}}">
+                        <select name="matkul_id" id="matkul_id" class="form-control" required>
+                            <option value="">Pilih matkul</option>
+                            @foreach ($matkul as $key => $value)
+                            <option value="{{ $key+1 }}" @if ($key+1 == old('matkul_id', $dosen[0]->matkul_id ?? ''))
+                                selected="selected"
+                                @endif
+                                >{{ $value->nama }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="d-flex flex-row gap-2 mt-4">
                         <a class="btn btn-md btn-warning" href="/dosen">Kembali</a>
@@ -42,7 +50,7 @@
     // Add active class to the current button (highlight it)
     var current = document.getElementsByClassName("nav-link text-white");
     current[0].className = current[0].className.replace(" active bg-gradient-primary", "");
-    current[3].className += " active bg-gradient-primary"
+    current[2].className += " active bg-gradient-primary"
 </script>
 
 @endsection

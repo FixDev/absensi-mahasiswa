@@ -19,19 +19,19 @@
                     @endif
                     <label class="form-label" for="nim">NIM</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="number" id="nim" class="form-control" name="nim" value="{{$mahasiswa->nim ?? ''}}">
+                        <input type="number" id="nim" class="form-control" name="nim" value="{{$mahasiswa->nim ?? ''}}" required>
                     </div>
                     <label class="form-label" for="nama">Nama</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="text" id="nama" class="form-control" name="nama" value="{{$mahasiswa->nama ?? ''}}">
+                        <input type="text" id="nama" class="form-control" name="nama" value="{{$mahasiswa->nama ?? ''}}" required>
                     </div>
                     <label class="form-label" for="kelas">Kelas</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="text" id="kelas" class="form-control" name="kelas" value="{{$mahasiswa->kelas ?? ''}}">
+                        <input type="text" id="kelas" class="form-control" name="kelas" value="{{$mahasiswa->kelas ?? ''}}" required>
                     </div>
                     <label class="form-label" for="semester">Semester</label>
                     <div class="input-group input-group-outline mb-3">
-                        <input type="number" id="semster" name="semester" class="form-control" value="{{$mahasiswa->semester ?? ''}}">
+                        <input type="number" id="semster" name="semester" class="form-control" value="{{$mahasiswa->semester ?? ''}}" required>
                     </div>
                     <div class="d-flex flex-row gap-2 mt-4">
                         <a class="btn btn-md btn-warning" href="/mahasiswa">Kembali</a>
@@ -46,7 +46,7 @@
     // Add active class to the current button (highlight it)
     var current = document.getElementsByClassName("nav-link text-white");
     current[0].className = current[0].className.replace(" active bg-gradient-primary", "");
-    current[3].className += " active bg-gradient-primary"
+    current[1].className += " active bg-gradient-primary"
 </script>
 
 @endsection

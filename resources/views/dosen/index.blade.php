@@ -41,7 +41,7 @@
                                     </td>
                                     <td>{{$dsn->nidn}}</td>
                                     <td class="align-middle text-center text-sm">{{$dsn->nama}}</td>
-                                    <td class="align-middle text-center text-sm">{{$dsn->matkul->nama ?? '-'}}</td>
+                                    <td class="align-middle text-center text-sm">{{$dsn->matkul->nama ?? "Belum ada mata kuliah"}}</td>
                                     <td class="align-middle text-center">
                                         <form method="post" action="{{route('dosen.destroy', $dsn->id)}}">
                                             <a href="/dosen/{{$dsn->id}}" class="btn btn-primary btn-sm">

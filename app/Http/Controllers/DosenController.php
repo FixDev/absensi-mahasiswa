@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
+use App\Models\Matkul;
 use Illuminate\Http\Request;
 
 class DosenController extends Controller
@@ -26,7 +27,9 @@ class DosenController extends Controller
      */
     public function create()
     {
-        return view('dosen.form');
+        $matkul = Matkul::all();
+
+        return view('dosen.form')->with('matkul', $matkul);
     }
 
     /**
@@ -57,7 +60,8 @@ class DosenController extends Controller
      */
     public function show($id)
     {
-        $data = Dosen::findOrFail($id);
+        $data = Dosen::with('matkul')->where('id', $id)->first();
+
         return view('dosen.view')->with('dosen', $data);
     }
 
@@ -69,8 +73,11 @@ class DosenController extends Controller
      */
     public function edit($id)
     {
-        $data = Dosen::findOrFail($id);
-        return view('dosen.form')->with('dosen', $data);
+        $data = Dosen::with('matkul')->where('id', $id)->first();
+
+        $matkul = Matkul::all();
+
+        return view('dosen.form')->with('dosen', $data)->with('matkul', $matkul);
     }
 
     /**

@@ -21,7 +21,7 @@
                             <span class="text-xs">{{$dosen->nidn}}</span>
                         </div>
                         <div class="d-flex align-items-center text-md">
-                            {{$dosen->matkul->nama ?? '-'}}
+                            {{$dosen->matkul->nama ?? 'Belum ada mata kuliah'}}
                         </div>
                     </li>
                 </ul>

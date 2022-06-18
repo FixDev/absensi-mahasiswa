@@ -17,7 +17,7 @@
         <div class="col-auto my-auto">
             <div class="h-100">
                 <h5 class="mb-1">
-                   {{$user->mahasiswa[0]->nama}}  ({{$user->username}})
+                   {{$user->mahasiswa[0]->nama}} - {{$user->username}} ({{$user->role}})
                 </h5>
                 <p class="mb-0 font-weight-normal text-sm">
                    {{$user->email}}

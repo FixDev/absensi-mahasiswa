@@ -20,13 +20,14 @@ class UserSeeder extends Seeder
         $datapalsu = Faker::create('id_ID');
 
         // Generate Mahasiswa
-        $data = [];
         for($i=1; $i<=10; $i++){
+            $data = [];
             $gender = $datapalsu->randomElement(['male', 'female']);
             $data = [
                 'username' => $datapalsu->username($gender),
                 'email' => $datapalsu->email($gender),
                 'password' => Hash::make('12345678'),
+                'role' => 'mahasiswa',
                 'mahasiswa_id' => $i,
                 'dosen_id' => null,
             ];
@@ -34,17 +35,27 @@ class UserSeeder extends Seeder
         }
 
         // Generate Dosen
-        $data = [];
         for($i=1; $i<=10; $i++){
+            $data = [];
             $gender = $datapalsu->randomElement(['male', 'female']);
             $data = [
                 'username' => $datapalsu->username($gender),
                 'email' => $datapalsu->email($gender),
                 'password' => Hash::make('12345678'),
+                'role' => 'dosen',
                 'mahasiswa_id' => null,
                 'dosen_id' => $i,
             ];
             (new User())->insert($data);
         }
+
+        $data = [
+            'username' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'admin',
+            'mahasiswa_id' => null,
+            'dosen_id' => null,
+        ];
     }
 }

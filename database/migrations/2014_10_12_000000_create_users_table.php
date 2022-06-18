@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('username', 45);
             $table->string('email', 45)->unique();
             $table->string('password');
+            $table->string('role', 45);
             $table->integer('mahasiswa_id')->nullable();
             $table->integer('dosen_id')->nullable();
             // $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas');

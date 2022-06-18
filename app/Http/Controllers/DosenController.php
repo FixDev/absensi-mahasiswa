@@ -14,7 +14,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $data = Dosen::all();
+        $data = Dosen::with('matkul')->get();
 
         return view('dosen.index')->with('dosen', $data);
     }

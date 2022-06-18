@@ -14,7 +14,9 @@ class DosenController extends Controller
      */
     public function index()
     {
-        return view('dosen.index');
+        $data = Dosen::all();
+
+        return view('dosen.index')->with('dosen', $data);
     }
 
     /**
@@ -24,7 +26,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        //
+        return view('dosen.form');
     }
 
     /**
@@ -35,51 +37,78 @@ class DosenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nidn' => 'required',
+            'nama' => 'required',
+            'matkul_id' => 'required',
+        ]);
+
+        Dosen::create($request->all());
+
+        return redirect()->route('dosen.index')
+            ->with('success', 'Dosen berhasil dibuat.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Dosen  $dosen
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dosen $dosen)
+    public function show($id)
     {
-        //
+        $data = Dosen::findOrFail($id);
+        return view('dosen.view')->with('dosen', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Dosen  $dosen
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dosen $dosen)
+    public function edit($id)
     {
-        //
+        $data = Dosen::findOrFail($id);
+        return view('dosen.form')->with('dosen', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Dosen  $dosen
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dosen $dosen)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nidn' => 'required',
+            'nama' => 'required',
+            'matkul_id' => 'required',
+        ]);
+
+        $dosen = Dosen::findOrFail($id);
+
+        $dosen->update($request->all());
+
+        return redirect()->route('dosen.show', $dosen->id)
+            ->with('success', 'Dosen berhasil diupdate.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Dosen  $dosen
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dosen $dosen)
+    public function destroy($id)
     {
-        //
+        $dosen = Dosen::findOrFail($id);
+
+        $dosen->delete();
+
+        return redirect()->route('dosen.index')
+            ->with('success', 'Dosen berhasil dihapus.');
     }
 }

@@ -47,7 +47,7 @@ class MahasiswaController extends Controller
         Mahasiswa::create($request->all());
 
         return redirect()->route('mahasiswa.index')
-            ->with('success', 'Mata kuliah berhasil dibuat.');
+            ->with('success', 'Mahasiswa berhasil dibuat.');
     }
 
     /**
@@ -95,7 +95,7 @@ class MahasiswaController extends Controller
         $mahasiswa->update($request->all());
 
         return redirect()->route('mahasiswa.show', $mahasiswa->id)
-            ->with('success', 'Mata Kuliah berhasil diupdate.');
+            ->with('success', 'Mahasiswa berhasil diupdate.');
     }
 
     /**
@@ -111,6 +111,6 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
 
         return redirect()->route('mahasiswa.index')
-            ->with('success', 'Mata Kuliah berhasil dihapus.');
+            ->with('success', 'Mahasiswa berhasil dihapus.');
     }
 }

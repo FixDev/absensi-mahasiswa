@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index']);
 
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::resource('/mahasiswa', MahasiswaController::class);
 Route::get('/dosen', [DosenController::class, 'index']);
 
 Route::resource('/matkul', MatkulController::class);

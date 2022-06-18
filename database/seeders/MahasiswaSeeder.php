@@ -20,14 +20,16 @@ class MahasiswaSeeder extends Seeder
 
         // Generate Mahasiswa
         $data = [];
-        for($i=1; $i<=10; $i++){
+        for ($i = 1; $i <= 10; $i++) {
             $randKelas = $datapalsu->randomElement(['TI ', 'SI ']);
             $randKelasNum = $datapalsu->numberBetween($min = 1, $max = 18);
+            $randSemester = $datapalsu->numberBetween($min = 1, $max = 12);
             $gender = $datapalsu->randomElement(['male', 'female']);
             $data = [
                 'nim' => $datapalsu->randomNumber(5, true),
                 'nama' => $datapalsu->name($gender),
-                'kelas' => $randKelas.$randKelasNum,
+                'semester' => $randSemester,
+                'kelas' => $randKelas . $randKelasNum,
             ];
             (new Mahasiswa())->insert($data);
         }

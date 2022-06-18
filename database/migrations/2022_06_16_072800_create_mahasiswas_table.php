@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('nim');
             $table->string('nama', 45);
+            $table->integer('semester');
             $table->string('kelas', 45);
             $table->timestamps();
         });

@@ -48,6 +48,16 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
+        @if(Auth::user()->role == 'mahasiswa')
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/absensi">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span class="nav-link-text ms-1">Absensi</span>
+          </a>
+        </li>
+        @else
         <li class="nav-item">
           <a class="nav-link text-white" href="/">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -91,6 +101,7 @@
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
+        @endif
       </ul>
     </div>
   </aside>
@@ -110,10 +121,16 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <button href="../pages/sign-in.html" class="btn btn-danger mt-2">
+
+              <a class="btn btn-danger mt-2" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Logout</span>
-              </button>
+                <span class="d-sm-inline d-none"> {{ __('Logout') }} </span>
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
             </li>
           </ul>
         </div>

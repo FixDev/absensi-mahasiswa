@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
@@ -25,3 +26,4 @@ Route::resource('/mahasiswa', MahasiswaController::class);
 Route::resource('/dosen', DosenController::class);
 Route::resource('/matkul', MatkulController::class);
 Route::resource('/profile', ProfileController::class);
+Route::resource('/absensi', AbsensiController::class);

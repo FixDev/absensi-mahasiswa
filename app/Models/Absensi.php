@@ -20,11 +20,11 @@ class Absensi extends Model
     public function mahasiswa()
     {
         // return $this->belongsTo(Model::class, 'foreign_key', 'owner_key');
-        return $this->belongsTo(Mahasiswa::class, 'id', 'mahasiswa_id');
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id', 'id');
     }
 
     public function matkul()
     {
-        return $this->belongsTo(Matkul::class, 'id', 'matkul_id');
+        return $this->belongsTo(Matkul::class, 'matkul_id', 'id');
     }
 }

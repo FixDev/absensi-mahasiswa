@@ -23,7 +23,6 @@ class DashboardController extends Controller
         $data['total_matkul'] = Matkul::count();
         $data['total_absensi'] = Absensi::count();
         return view('dashboard', $data);
-        return view('dashboard');
     }
 
     /**

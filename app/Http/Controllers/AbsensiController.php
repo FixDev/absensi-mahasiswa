@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
+
+use App\Models\User;
+
 use App\Models\Absensi;
 use App\Models\Mahasiswa;
 use App\Models\Matkul;
@@ -17,9 +22,19 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        // $mhs_id = session()->get('nim'); ---> pake ini kalo bisa ngambil session
-        $data = Absensi::where('nim', '97701')->with(['matkul', 'mahasiswa'])->get();
-        // dd($data);
+        $uname_auth = Auth::user()->username;
+        $queried_uname = User::where('username', $uname_auth)->first();
+
+        $id = $queried_uname->mahasiswa_id;
+
+        $mhs = User::with('mahasiswa')
+            ->where('mahasiswa_id', $id)
+            ->first();
+
+        $mhs_id = $mhs->mahasiswa[0]->nim;
+
+        $data = Absensi::where('nim', $mhs_id)->with(['matkul', 'mahasiswa'])->get();
+
         return view('absensi.index')->with('absensi', $data);
     }
 
@@ -31,7 +46,7 @@ class AbsensiController extends Controller
     public function create()
     {
         $matkul = Matkul::all();
-        $s_kehadiran = ['Alpa','Hadir','Izin','Sakit'];
+        $s_kehadiran = ['Alpa', 'Hadir', 'Izin', 'Sakit'];
         return view('absensi.form')->with('matkul', $matkul)->with('status', $s_kehadiran);
     }
 

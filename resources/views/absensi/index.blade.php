@@ -9,7 +9,7 @@
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">Table Absensi - {{$absensi[0]->mahasiswa->nama}}</h6>
+                    <h6 class="text-white text-capitalize ps-3">Table Absensi - {{$absensi[0]->mahasiswa->nama ?? '-'}}</h6>
                 </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -54,7 +54,7 @@
     // Add active class to the current button (highlight it)
     var current = document.getElementsByClassName("nav-link text-white");
     current[0].className = current[0].className.replace(" active bg-gradient-primary", "");
-    current[1].className += " active bg-gradient-primary"
+    current[0].className += " active bg-gradient-primary"
 </script>
 
 @endsection

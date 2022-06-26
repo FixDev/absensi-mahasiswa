@@ -17,10 +17,10 @@
         <div class="col-auto my-auto">
             <div class="h-100">
                 <h5 class="mb-1">
-                   {{$user->mahasiswa[0]->nama}} - {{$user->username}} ({{$user->role}})
+                    {{$user->mahasiswa[0]->nama ?? $user->dosen[0]->nama}} - {{$user->username}} ({{$user->role}})
                 </h5>
                 <p class="mb-0 font-weight-normal text-sm">
-                   {{$user->email}}
+                    {{$user->email}}
                 </p>
             </div>
         </div>
@@ -31,7 +31,11 @@
     // Add active class to the current button (highlight it)
     var current = document.getElementsByClassName("nav-link text-white");
     current[0].className = current[0].className.replace(" active bg-gradient-primary", "");
-    current[4].className += " active bg-gradient-primary"
+    if (window.location.href.includes('profile')) {
+        current[1].className += " active bg-gradient-primary"
+    } else {
+        current[4].className += " active bg-gradient-primary"
+    }
 </script>
 
 @endsection

@@ -22,8 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
-
+Route::resource('/', DashboardController::class)->middleware('auth');
 Route::resource('/mahasiswa', MahasiswaController::class)->middleware('auth');
 Route::resource('/dosen', DosenController::class)->middleware('auth');
 Route::resource('/matkul', MatkulController::class)->middleware('auth');
